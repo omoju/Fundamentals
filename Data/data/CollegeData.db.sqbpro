@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/omojumiller/mycode/dataSciencePrep/Fundamentals/Data/data/CollegeData.db"/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="787"/><expanded_item id="0" parent="-1"/><expanded_item id="1" parent="-1"/><expanded_item id="2" parent="-1"/><expanded_item id="3" parent="-1"/></tab_structure><tab_browse><current_table name="Apply"/><default_encoding codec=""/><browsetable_info data="AAAAAQAAAAoAQQBwAHAAbAB5AAAAAAAAAAAAAAAAAAAAAAAAAAAA/////w=="/></tab_browse><tab_sql><sql name="Stanford_Db5_Subqueries.sql">/* select college with highest enrollment */
+
+select cName
+from College C1
+where not exists (
+								select *
+								from College C2
+								where C2.enrollment &gt; C1.enrollment
+							)</sql><sql name="SQL 2">/* select student with the highest GPA*/
+
+select sName, GPA
+from Student C1
+where not exists (
+								select *
+								from Student C2
+								where C2.GPA&gt; C1.GPA
+							)</sql><sql name="scaledGPA.sql">/* students whose scaled GPA changes its value by more that 1 */
+
+select sID, sName, GPA, GPA*(sizeHS/1000.0) as scaledGPA
+from Student
+where GPA*(sizeHS/1000.0) - GPA &gt; 1.0
+or GPA - GPA*(sizeHS/1000.0) &gt; 1.0</sql><current_tab id="2"/></tab_sql></sqlb_project>
